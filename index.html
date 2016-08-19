@@ -5,11 +5,21 @@
 </head>
 
 <body>
-    
+
     <ul id="test"></ul>
-    
+
+    <script id="card-template" type="template/x-handlebars">
+        <div class="card {{suit}}">
+            <h3 class="first-number">{{number}}</h3>
+            <h3 class="first-suit">{{suit}}</h3>
+            <h3 class="second-number">{{number}}</h3>
+            <h3 class="second-suit">{{suit}}</h3>
+        </div>
+    </script>
+
     <script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
     <script src="js/underscore-min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/handlebars-v4.0.5.js" type="text/javascript"></script>
     <script src="js/app.js" type="text/javascript"></script>
 </body>

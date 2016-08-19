@@ -23,6 +23,17 @@ $(function () {
         $('#test').append(item);
     });
     
+    while (deck.length > 0 || $('.card').length === 3) {
+        var deal = deck[0];
+        var template = Handlebars.compile($('#card-template').html());
+        $('.card-spot').each(function(i, e) {
+            if (!$(this).html()) {
+                $(this).append(template(deal));
+                return false;
+            }
+        });
+    }
+    
     var check = [deck, deck.length];
     logger(check);
 
