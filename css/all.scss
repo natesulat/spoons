@@ -5,15 +5,12 @@ body {
 }
 
 #card-container {
-    @include flexbox();
-    @include mobile {
-        @include flexdirection(column);
-    }
     @include not-mobile {
+        @include flexbox();
         @include flexdirection(row);
+        @include flexAlignItems(center);
+        @include justifyContent(center);
     }
-    @include flexAlignItems(center);
-    @include justifyContent(center);
     margin: 0 auto;
 }
 
