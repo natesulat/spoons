@@ -18,21 +18,23 @@ $(function () {
     };
     
     deck = _.shuffle(deck);
-    deck.forEach(function(i) {
-        var item = $('<li></li').text(i.number + ' of ' + i.suit);
-        $('#test').append(item);
-    });
     
-    while (deck.length > 0 || $('.card').length === 3) {
-        var deal = deck[0];
-        var template = Handlebars.compile($('#card-template').html());
-        $('.card-spot').each(function(i, e) {
-            if (!$(this).html()) {
-                $(this).append(template(deal));
-                return false;
-            }
-        });
-    }
+    $('#card-container').css('height', $(window).height());
+//    deck.forEach(function(i) {
+//        var item = $('<li></li').text(i.number + ' of ' + i.suit);
+//        $('#test').append(item);
+//    });
+    
+//    while (deck.length > 0 || $('.card').length === 3) {
+//        var deal = deck[0];
+//        var template = Handlebars.compile($('#card-template').html());
+//        $('.card-spot').each(function(i, e) {
+//            if (!$(this).html()) {
+//                $(this).append(template(deal));
+//                return false;
+//            }
+//        });
+//    }
     
     var check = [deck, deck.length];
     logger(check);
