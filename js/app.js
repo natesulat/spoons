@@ -25,19 +25,20 @@ $(function () {
 //        $('#test').append(item);
 //    });
     
-//    while (deck.length > 0 || $('.card').length === 3) {
-//        var deal = deck[0];
-//        var template = Handlebars.compile($('#card-template').html());
-//        $('.card-spot').each(function(i, e) {
-//            if (!$(this).html()) {
-//                $(this).append(template(deal));
-//                return false;
-//            }
-//        });
-//    }
+    $('button').click(function)
+    
+    while (deck.length > 0 || $('.card').length === 4) {
+        var deal = deck.shift();
+        var template = Handlebars.compile($('#card-template').html());
+        if ($('#card-container card').length <= 4) {
+            $('#card-container').append(template(deal));
+        }
+    }
     
     var check = [deck, deck.length];
     logger(check);
+    
+    $('body').removeAttr('style');
 
 
     function logger(arr) {
