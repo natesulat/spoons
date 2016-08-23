@@ -33,12 +33,17 @@ body {
         width: 150px;
         height: 225px;
     }
-    &.h,
-    &.d {
+    &.hearts,
+    &.diamonds {
         color: red;
+    }
+    &.clubs,
+    &.spades {
+        color: black;
     }
     & h1 {
         font-size: 5rem;
+        text-transform: uppercase;
         &:nth-child(1) {
             position: absolute;
             left: 30;

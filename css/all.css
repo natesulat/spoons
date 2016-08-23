@@ -5856,10 +5856,13 @@ body {
     .card {
       width: 150px;
       height: 225px; } }
-  .card.h, .card.d {
+  .card.hearts, .card.diamonds {
     color: red; }
+  .card.clubs, .card.spades {
+    color: black; }
   .card h1 {
-    font-size: 5rem; }
+    font-size: 5rem;
+    text-transform: uppercase; }
     .card h1:nth-child(1) {
       position: absolute;
       left: 30;
