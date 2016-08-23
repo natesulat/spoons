@@ -6,8 +6,8 @@ Spoons is a game that combines all the competitiveness of musical chairs with al
 
 The rules are simple:
 
-1. All players are allowed up to three cards in their hand
-2. The point of the game is to get three cards of the same number in your hand (three jacks, three aces, etc.)
+1. All players are allowed up to four cards in their hand
+2. The point of the game is to complete a set i.e. all four Jacks, or Queens, or Kings, etc.
 3. One lucky guy or gal starts drawing cards and, if he/she doesn't want to keep them in her hand, passes them to the next player
 4. Every player can pass an unwanted card to the next player in the circle. Passing cards is not turn-based; you can pass a card as soon as you receive it.
 5. As soon as a player completes their hand (see rule 2), they can grab one of the spoons available. There is one fewer spoon than there are players.
@@ -19,5 +19,5 @@ Current dependencies for the project:
 
 * jQuery
 * Underscore
-* Handlebars
+* Mustache
 * Bootstrap

@@ -18,33 +18,31 @@ $(function () {
     };
 
     deck = _.shuffle(deck);
-
-    $('#card-container').css('height', $(window).height());
-
-    while (deck.length > 0) {
-        if ($('.card').length < 4) {
-            var deal = Mustache.render('<div class="col-sm-3 col-xs-6"><svg src="img/{{number}}{{suit}}.svg></svg></div>', deck.shift());
-            $('#card-container').append(deal);
-        }
-    }
-
-    $('#card-container').on('click', '.card', function (e) {
-        e.preventDefault();
-        $(this).remove();
-        $('#card-container').append(template(deck.shift()));
-    });
-
+    
     var check = [deck[0], deck, deck.length];
 
     logger(check);
 
+    $('#card-container').css('height', $(window).height());
+
+    
+    // THE LOOP CONTINUES BEYOND THOSE FOUR CARDS, SO YOU'RE CALLING AN EMPTY DECK LATER
     while (deck.length > 0) {
-        deck.shift();
-        console.log(deck[0]);
+        var deal = deck.shift();
+        console.log(deck.length)
+        if ($('#card-container > div').length < 4) {
+            deal = Mustache.render('<div class="col-sm-3 col-xs-6"><p>This should be {{number}}{{suit}}.svg</p></div>', deal);
+            console.log(deal);
+            $('#card-container').prepend(deal);
+        }
     }
-    //    while (deck.length > 0) {
-    //        logger(check);
-    //    }
+
+    $('#card-container').on('click', '> div', function (e) {
+        e.preventDefault();
+        $(this).remove();
+        console.log(deck.shift());
+    });
+
 
     $('body').removeAttr('style');
 
