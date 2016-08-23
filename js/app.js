@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     function Card(number, suit) {
         this.number = number;
         this.suit = suit;
@@ -18,37 +18,40 @@ $(function () {
     };
 
     deck = _.shuffle(deck);
-    
+
     var check = [deck[0], deck, deck.length];
 
     logger(check);
 
     $('#card-container').css('height', $(window).height());
 
-    
-    // THE LOOP CONTINUES BEYOND THOSE FOUR CARDS, SO YOU'RE CALLING AN EMPTY DECK LATER
-    while (deck.length > 0) {
-        var deal = deck.shift();
-        console.log(deck.length)
-        if ($('#card-container > div').length < 4) {
-            deal = Mustache.render('<div class="col-sm-3 col-xs-6"><p>This should be {{number}}{{suit}}.svg</p></div>', deal);
-            console.log(deal);
-            $('#card-container').prepend(deal);
-        }
-    }
 
-    $('#card-container').on('click', '> div', function (e) {
+    dealCards();
+
+
+    $('#card-container').on('click', '> div', function(e) {
         e.preventDefault();
         $(this).remove();
-        console.log(deck.shift());
+        dealCards();
     });
+
+    // Card dealing handled. To do: Figure out dynamically generating SVGs, and then figure out passing of cards
 
 
     $('body').removeAttr('style');
 
     function logger(arr) {
-        arr.forEach(function (i) {
+        arr.forEach(function(i) {
             console.log(i);
         });
     };
+
+    function dealCards() {
+        while ($('#card-container > div').length < 4 && deck.length > 0) {
+            var deal = deck.shift();
+            deal = Mustache.render('<div class="col-sm-3 col-xs-6"><p>This should be {{number}}{{suit}}.svg</p></div>', deal);
+            console.log(deal);
+            $('#card-container').prepend(deal);
+        }
+    }
 });
