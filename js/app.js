@@ -8,9 +8,9 @@ $(function () {
         var t = i;
         for (j = 0; j < 4; j++) {
             var q = j;
-            q === 0 ? q = 'hearts' : q === 1 ? q = 'diamonds' : q === 2 ? q = 'clubs' : q = 'spades';
+            q === 0 ? q = 'H' : q === 1 ? q = 'D' : q === 2 ? q = 'C' : q = 'S';
             if (t > 10) {
-                t === 11 ? t = 'j' : t === 12 ? t = 'q' : t === 13 ? t = 'k' : t = 'a';
+                t === 11 ? t = 'J' : t === 12 ? t = 'Q' : t === 13 ? t = 'K' : t = 'A';
             }
             var newCard = new Card(t, q);
             deck.push(newCard);
@@ -21,17 +21,11 @@ $(function () {
 
     $('#card-container').css('height', $(window).height());
 
-    var template = Handlebars.compile($('#card-template').html());
-
     while (deck.length > 0) {
         if ($('.card').length < 4) {
-            var template = Handlebars.compile($('#card-template').html());
-            if ($('#card-container card').length <= 4) {
-                $('#card-container').append(template(deck.shift()));
-            }
+            var deal = Mustache.render('<div class="col-sm-3 col-xs-6"><svg src="img/{{number}}{{suit}}.svg></svg></div>', deck.shift());
+            $('#card-container').append(deal);
         }
-        deck.shift();
-        console.log(deck[0]);
     }
 
     $('#card-container').on('click', '.card', function (e) {

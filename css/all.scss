@@ -5,55 +5,5 @@ body {
 }
 
 #card-container {
-    @include not-mobile {
-        @include flexbox();
-        @include flexdirection(row);
-        @include flexAlignItems(center);
-        @include justifyContent(center);
-    }
     margin: 0 auto;
-}
-
-.card {
-    background-color: #fff;
-    @include border-radius(0.75em);
-    position: relative;
-    margin: 1em 2em;
-    width: 300px;
-    height: 400px;
-    @include large-scrn {
-        width: 300px;
-        height: 400px;
-    }
-    @include medium-scrn {
-        width: 200px;
-        height: 275px;
-    }
-    @include mobile {
-        width: 150px;
-        height: 225px;
-    }
-    &.hearts,
-    &.diamonds {
-        color: red;
-    }
-    &.clubs,
-    &.spades {
-        color: black;
-    }
-    & h1 {
-        font-size: 5rem;
-        text-transform: uppercase;
-        &:nth-child(1) {
-            position: absolute;
-            left: 30;
-            top: 20;
-        }
-        &:nth-child(2) {
-            @include rotate(180deg);
-            position: absolute;
-            bottom: 20;
-            right: 30;
-        }
-    }
 }
