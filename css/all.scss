@@ -6,4 +6,11 @@ body {
 
 #card-container {
     margin: 0 auto;
+    text-align: center;
+    @include not-mobile {
+        @include flexbox();
+        @include flexdirection(row);
+        @include flexAlignItems(center);
+        @include justifyContent(center);
+    }
 }
