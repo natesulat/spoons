@@ -19,11 +19,11 @@ $(function() {
 
     deck = _.shuffle(deck);
 
-    var check = [deck[0], deck, deck.length];
+    var check = [deck[0], deck, deck.length, $(window).height()];
 
     logger(check);
 
-    $('#card-container').css('height', $(window).height());
+    $('#card-container').css('height', $(window).height()/1.5);
 
 
     dealCards();
@@ -49,7 +49,8 @@ $(function() {
     function dealCards() {
         while ($('#card-container > div').length < 4 && deck.length > 0) {
             var deal = deck.shift();
-            deal = Mustache.render('<div class="col-sm-3 col-xs-6"><p>This should be {{number}}{{suit}}.svg</p></div>', deal);
+            var template = Handlebars.compile($('#card-template').html())
+            deal = template(deal);
             console.log(deal);
             $('#card-container').prepend(deal);
         }
