@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     function Card(number, suit) {
         this.number = number;
         this.suit = suit;
@@ -19,40 +19,43 @@ $(function() {
 
     deck = _.shuffle(deck);
 
-    var check = [deck[0], deck, deck.length, $(window).height()];
+    var check = [deck[0], deck, deck.length];
 
     logger(check);
 
-    $('#card-container').css('height', $(window).height()/1.5);
+    $('#card-container').css('height', $(window).height() / 1.5);
 
 
     dealCards();
 
 
-    $('#card-container').on('click', '> div', function(e) {
+    $('#card-container').on('click', '> div', function (e) {
         e.preventDefault();
         $(this).remove();
         dealCards();
     });
 
-    // Card dealing handled. To do: Figure out dynamically generating SVGs, and then figure out passing of cards
+    // Card dealing handled. To do:
+        // #card-container height resize function
+        // Create spoons loop
+        // Configure database communication/card passing
+        // Figure out player objects
 
 
     $('body').removeAttr('style');
 
     function logger(arr) {
-        arr.forEach(function(i) {
+        arr.forEach(function (i) {
             console.log(i);
         });
     };
 
-    function dealCards() {
+    function dealCards(eq) {
         while ($('#card-container > div').length < 4 && deck.length > 0) {
             var deal = deck.shift();
             var template = Handlebars.compile($('#card-template').html())
             deal = template(deal);
-            console.log(deal);
-            $('#card-container').prepend(deal);
+            $('#card-container').append(deal);
         }
     }
 });
