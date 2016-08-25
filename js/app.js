@@ -26,7 +26,7 @@ $(function () {
     $('#card-container').css('height', $(window).height() / 1.5);
 
 
-    dealCards();
+    $('#start').click(dealCards);
 
 
     $('#card-container').on('click', '> div', function (e) {
