@@ -23,7 +23,11 @@ $(function () {
 
     logger(check);
 
-    $('#card-container').css('height', $(window).height() / 1.5);
+    dynamicContainer();
+
+    $(window).resize(function () {
+        dynamicContainer();
+    });
 
 
     $('#start').click(dealCards);
@@ -35,11 +39,10 @@ $(function () {
         dealCards();
     });
 
-    // Card dealing handled. To do:
-        // #card-container height resize function
-        // Create spoons loop
-        // Configure database communication/card passing
-        // Figure out player objects
+    // To do:
+    // Create spoons loop
+    // Configure database communication/card passing
+    // Figure out player objects
 
 
     $('body').removeAttr('style');
@@ -56,6 +59,14 @@ $(function () {
             var template = Handlebars.compile($('#card-template').html())
             deal = template(deal);
             $('#card-container').append(deal);
+        }
+    }
+
+    function dynamicContainer() {
+        if ($(window).width() < 768) {
+            $('#card-container').css('height', $(window).width() / 1.5);
+        } else {
+            $('#card-container').css('height', $(window).height() / 1.5);
         }
     }
 });
